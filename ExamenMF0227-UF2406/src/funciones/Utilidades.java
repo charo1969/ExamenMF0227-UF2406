@@ -1,8 +1,20 @@
 package funciones;
+/**
+ * creamos un método para devolver las notas.
+ * @author $ Charo Castro
+ *
+ */
 
 public class Utilidades {
 
-	
+	/**
+	 * metodo que devuelve una nota dependiendo de esta
+	 * @param nota será double
+	 * @return un String de suspenso si es menos de 5,
+	 * aprobado si es 5, bien si es 6.5,
+	 * Notable si es 8, sobresaliente si es 10 y 
+	 * matricula si es mas de 10
+	 */
 
 	public String devuelveNota(double nota) {
 		String descripcion = "Matrícula";
