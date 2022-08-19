@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import funciones.Utilidades;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -21,6 +23,8 @@ public class VentanaCalculaMedia extends JFrame {
 	private JTextField txtUf2404;
 	private JTextField txtUf2405;
 	private JTextField txtUf2406;
+	private JLabel lblNotaMedia;
+	private JLabel lblResultado;
 	
 
 	/**
@@ -45,11 +49,11 @@ public class VentanaCalculaMedia extends JFrame {
 	public VentanaCalculaMedia() {
 		setTitle("Calcula Media MF0227");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 655, 355);
+		setBounds(100, 100, 799, 355);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[][][111.00][121.00][grow][][73.00,grow]", "[grow][grow][grow][grow][grow][grow][grow][grow]"));
+		contentPane.setLayout(new MigLayout("", "[][][111.00][121.00][grow][][73.00,grow][]", "[grow][grow][grow][grow][grow][grow][grow][grow]"));
 		
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 14));
@@ -87,39 +91,42 @@ public class VentanaCalculaMedia extends JFrame {
 		contentPane.add(txtUf2406, "cell 6 2,growx");
 		txtUf2406.setColumns(10);
 		
-		JButton btnCalcular = new JButton("Calcular");
-		btnCalcular.addActionListener(new ActionListener() {
+		JButton btnCalcularNota = new JButton("Calcular Nota");
+		btnCalcularNota.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ValidarCalcular();
+				CalcularNota();
 			}
 		});
-		btnCalcular.setFont(new Font("Verdana", Font.PLAIN, 14));
-		contentPane.add(btnCalcular, "cell 3 4,alignx center");
+		btnCalcularNota.setFont(new Font("Verdana", Font.PLAIN, 14));
+		contentPane.add(btnCalcularNota, "cell 1 4 6 1,alignx center");
 		
 		JLabel lblNewLabel_4 = new JLabel("Nota Media:");
 		lblNewLabel_4.setFont(new Font("Verdana", Font.PLAIN, 14));
 		contentPane.add(lblNewLabel_4, "cell 1 6,alignx left");
 		
-		JLabel lblNewLabel_6 = new JLabel("0.0");
-		lblNewLabel_6.setFont(new Font("Verdana", Font.PLAIN, 14));
-		contentPane.add(lblNewLabel_6, "cell 2 6");
+		lblNotaMedia = new JLabel("0.0");
+		lblNotaMedia.setFont(new Font("Verdana", Font.PLAIN, 14));
+		contentPane.add(lblNotaMedia, "cell 2 6");
 		
 		JLabel lblNewLabel_5 = new JLabel("Resultado:");
 		lblNewLabel_5.setFont(new Font("Verdana", Font.PLAIN, 14));
 		contentPane.add(lblNewLabel_5, "cell 1 7,alignx left");
 		
-		JLabel lblNewLabel_7 = new JLabel("No calculado aún");
-		lblNewLabel_7.setFont(new Font("Verdana", Font.PLAIN, 14));
-		contentPane.add(lblNewLabel_7, "cell 2 7 2 1");
+		lblResultado = new JLabel("No calculado aún ...");
+		lblResultado.setFont(new Font("Verdana", Font.PLAIN, 14));
+		contentPane.add(lblResultado, "cell 2 7 2 1");
 	}
 
-	protected void ValidarCalcular() {
+	protected void CalcularNota() {
 		String nombre = txtNombre.getText();
-		String uf2404 = txtUf2404.getText();
-		String uf2405 = txtUf2405.getText();
-		String uf2406 = txtUf2406.getText();
+		double nota1=Double.parseDouble(
+				txtUf2404.getText());
 		
+		double media =(nota1 + nota2 + nota3)/3;
+		lblNotaMedia.setText(""+media);
 		
+		Utilidades u = new Utilidades();
+		lblResultado.setText(nombre + "ha sacado un " +u.devuelveNota(media));
 		
 		
 	}

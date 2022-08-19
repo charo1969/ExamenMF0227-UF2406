@@ -18,7 +18,7 @@ class UtilidadesTest {
 
 	@Test
 	void devuelveNotatest() {
-		String descripcion ="Matrícula";
+		//String descripcion ="Matrícula";
 		
 		assertAll(
 		()->assertEquals("Suspenso", u.devuelveNota(4),
@@ -29,9 +29,13 @@ class UtilidadesTest {
 				"Estás aprobado"),
 		()->assertEquals("Sobresaliente", u.devuelveNota(9),
 				"Estás aprobado"),
+		()->assertEquals("Matrícula", u.devuelveNota(10),
+				"Estás aprobado"),
 		()->assertThrows(ArithmeticException.class,
-				()->u.devuelveNota(-1))
-		
+				()->u.devuelveNota(-1)),
+		()->assertThrows(ArithmeticException.class,
+				()->u.devuelveNota(11))
+	
 		);
 	
 		

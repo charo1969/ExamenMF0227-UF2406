@@ -13,7 +13,9 @@ public class Utilidades {
 	 * @return un String de suspenso si es menos de 5,
 	 * aprobado si es 5, bien si es 6.5,
 	 * Notable si es 8, sobresaliente si es 10 y 
-	 * matricula si es mas de 10
+	 * matricula si es mas de 10.
+	 * También devuelve dos excepcion AritmetiException que se
+	 * lanza si es menor a 0 y superior a 10
 	 */
 
 	public String devuelveNota(double nota) {
